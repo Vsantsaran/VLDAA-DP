@@ -1,0 +1,87 @@
+{
+  "posttest": {
+    "title": "Rod Cutting Problem - Post-Test",
+    "description": "Evaluate your understanding of the Dynamic Programming solution to the Rod Cutting problem after completing the simulation.",
+    "duration": "15 minutes",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the time complexity of the Dynamic Programming solution to the Rod Cutting Problem for a rod of length n?",
+        "options": [
+          "O(n)",
+          "O(n log n)",
+          "O(n²)",
+          "O(2ⁿ)"
+        ],
+        "correct": 2,
+        "explanation": "The DP solution uses nested loops: the outer loop runs n times (for each length 1 to n), and the inner loop runs up to i times for length i. This gives O(1 + 2 + 3 + ... + n) = O(n²) time complexity. While exponentially better than brute force O(2ⁿ), it's still quadratic."
+      },
+      {
+        "id": 2,
+        "question": "If we use a bottom-up DP approach for Rod Cutting with length n, what is the space complexity?",
+        "options": [
+          "O(1) - constant space",
+          "O(n) - linear space",
+          "O(n²) - quadratic space",
+          "O(2ⁿ) - exponential space"
+        ],
+        "correct": 1,
+        "explanation": "The bottom-up DP approach only needs to store the revenue array of size (n+1) and optionally a cuts array of the same size. Both are O(n) space. We don't need to store a 2D table because we build solutions iteratively from smaller to larger lengths."
+      },
+      {
+        "id": 3,
+        "question": "Why can't we effectively use a Greedy Algorithm (always making the locally optimal choice) to solve the Rod Cutting Problem?",
+        "options": [
+          "Greedy algorithms are always slower than Dynamic Programming",
+          "The problem doesn't exhibit the greedy choice property; local optimal choices don't guarantee global optimum",
+          "Greedy algorithms can only work with sorted data",
+          "The Rod Cutting Problem has no optimal solution"
+        ],
+        "correct": 1,
+        "explanation": "The Rod Cutting Problem lacks the greedy choice property. Choosing the piece with the best price-per-unit ratio at each step doesn't guarantee the overall maximum revenue. For example, if price[2]=5 and price[4]=8, greedy might choose two cuts of 2 (total 10), but keeping length 4 uncut (total 8) or trying other combinations might not be considered by greedy."
+      },
+      {
+        "id": 4,
+        "question": "Consider a rod of length 6 with prices: p[1]=1, p[2]=5, p[3]=8, p[4]=9, p[5]=10, p[6]=17. The optimal revenue is 17 (no cut). Which property of Dynamic Programming ensures we DON'T miss this solution?",
+        "options": [
+          "Memoization prevents us from forgetting solutions",
+          "We systematically consider ALL possible first cuts, including no cut (taking the full length)",
+          "The recursion tree automatically finds the best path",
+          "Greedy choice property guarantees the optimal solution"
+        ],
+        "correct": 1,
+        "explanation": "The DP recurrence relation tries all possible first cuts from length 1 to n. When j=n (j=6 in this case), we're effectively considering 'no cut at all'—just taking price[6]=17. This exhaustive consideration of all options ensures we find the true optimum."
+      },
+      {
+        "id": 5,
+        "question": "In the Rod Cutting Problem, which statement BEST describes why we have overlapping subproblems?",
+        "options": [
+          "Because we use the same rod multiple times in different test cases",
+          "Because computing optimal revenue for length n requires solving for multiple smaller lengths, and these smaller lengths appear in computations for different larger lengths",
+          "Because the price table has duplicate values",
+          "Because we cut the rod into overlapping pieces that share common sections"
+        ],
+        "correct": 1,
+        "explanation": "Overlapping subproblems occur because the optimal solution for any length k is needed by multiple larger lengths. For example, revenue[3] is used when computing revenue[4], revenue[5], revenue[6], etc. Without DP, we'd recompute revenue[3] every time; with DP, we compute it once and reuse the stored value."
+      }
+    ],
+    "bonus_section": {
+      "title": "Advanced Understanding",
+      "questions": [
+        {
+          "id": 6,
+          "question": "BONUS: If we modify the problem to have a COST for each cut (e.g., $1 per cut), how would the DP recurrence relation change?",
+          "options": [
+            "revenue[i] = max(price[j] + revenue[i-j]) for all j",
+            "revenue[i] = max(price[j] + revenue[i-j] - cut_cost) for all j, where j < i",
+            "revenue[i] = max(price[j] - cut_cost + revenue[i-j]) for all j",
+            "The problem can no longer be solved using Dynamic Programming"
+          ],
+          "correct": 1,
+          "explanation": "When there's a cost per cut, we subtract the cutting cost only when we actually make a cut (j < i). If j = i (no cut), there's no cutting cost. The modified relation becomes: revenue[i] = max(price[i], max(price[j] + revenue[i-j] - cut_cost) for 1 ≤ j < i). This ensures we only pay the cutting cost when we actually divide the rod."
+        }
+      ]
+    }
+  }
+}
