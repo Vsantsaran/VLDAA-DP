@@ -306,40 +306,33 @@
               <h2 id="longest-common-subsequence-lcs-visualizer">Longest Common Subsequence (LCS) Visualizer</h2>
           
             </div>
-              <h3 id="link-your-theory-in-here">Link your theory in here</h3>
-          <h1 id="theory-longest-common-subsequence-lcs">Theory: Longest Common Subsequence (LCS)</h1>
-          <h2 id="1-introduction">1. Introduction</h2>
+              <h2 id="1-introduction">1. Introduction</h2>
           <p>The Longest Common Subsequence (LCS) problem is a classic computer science problem that finds applications in various domains including bioinformatics (DNA sequence alignment), version control systems (diff utility), and natural language processing.</p>
           <h2 id="2-mathematical-definition">2. Mathematical Definition</h2>
-          <p>Given two sequences $X = x_1, x_2, \dots, x_m$ and $Y = y_1, y_2, \dots, y_n$, find the longest sequence $Z = z_1, z_2, \dots, z_k$ such that $Z$ is a subsequence of both $X$ and $Y$.</p>
+          <p>Given two sequences X = x₁, x₂, ..., xₘ and Y = y₁, y₂, ..., yₙ, find the longest sequence Z = z₁, z₂, ..., zₖ such that Z is a subsequence of both X and Y.</p>
           <h2 id="3-dynamic-programming-approach">3. Dynamic Programming Approach</h2>
           <h3 id="31-recurrence-relation">3.1 Recurrence Relation</h3>
-          <p>Let $L[i][j]$ denote the length of LCS of prefixes $X[1..i]$ and $Y[1..j]$.</p>
-          <p>$$
-          L[i][j] =
-          \begin{cases}
-          0 &amp; \text{if } i = 0 \text{ or } j = 0 \
-          L[i-1][j-1] + 1 &amp; \text{if } x_i = y_j \
-          \max(L[i-1][j], L[i][j-1]) &amp; \text{if } x_i \neq y_j
-          \end{cases}
-          $$</p>
+          <p>Let L[i][j] denote the length of LCS of prefixes X[1..i] and Y[1..j].</p>
+          <p>L[i][j] = 0 if i = 0 or j = 0</p>
+          <p>L[i][j] = L[i-1][j-1] + 1 if xᵢ = yⱼ</p>
+          <p>L[i][j] = max(L[i-1][j], L[i][j-1]) if xᵢ ≠ yⱼ</p>
           <h3 id="32-time-and-space-complexity">3.2 Time and Space Complexity</h3>
           <ul>
-          <li><strong>Time Complexity</strong>: $O(mn)$ where $m$ and $n$ are lengths of sequences</li>
-          <li><strong>Space Complexity</strong>: $O(mn)$ for storing the DP table</li>
+          <li><strong>Time Complexity</strong>: O(mn) where m and n are lengths of sequences</li>
+          <li><strong>Space Complexity</strong>: O(mn) for storing the DP table</li>
           </ul>
           <h2 id="4-optimizations">4. Optimizations</h2>
           <h3 id="41-rolling-array-optimization">4.1 Rolling Array Optimization</h3>
-          <p>Instead of storing the entire $m \times n$ table, we can store only two rows at a time:</p>
+          <p>Instead of storing the entire m × n table, we can store only two rows at a time:</p>
           <ul>
-          <li>Space complexity reduces to $O(\min(m, n))$</li>
-          <li>Still maintains $O(mn)$ time complexity</li>
+          <li>Space complexity reduces to O(min(m, n))</li>
+          <li>Still maintains O(mn) time complexity</li>
           </ul>
           <h3 id="42-hirschbergs-algorithm">4.2 Hirschberg's Algorithm</h3>
           <p>A divide-and-conquer approach that:</p>
           <ul>
-          <li>Uses $O(mn)$ time</li>
-          <li>Uses only $O(\min(m, n))$ space</li>
+          <li>Uses O(mn) time</li>
+          <li>Uses only O(min(m, n)) space</li>
           <li>Can reconstruct the actual LCS</li>
           </ul>
           <h2 id="5-applications">5. Applications</h2>

@@ -1,6 +1,3 @@
-### Link your references in here
-# References
-
 ## Books
 1. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). *Introduction to Algorithms* (3rd ed.). MIT Press. (Chapter 15: Dynamic Programming)
 2. Gusfield, D. (1997). *Algorithms on Strings, Trees, and Sequences*. Cambridge University Press.
