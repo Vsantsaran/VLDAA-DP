@@ -764,6 +764,7 @@
     loadTheme();
     attachEvents();
     updateSpeedLabel();
+    state.speed = 2050 - parseInt(els.speedSlider.value);
     renderLogic();
 
     // Set default sequences
