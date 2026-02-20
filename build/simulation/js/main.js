@@ -155,7 +155,7 @@
   function setExplanation(text) { els.explanation.innerHTML = text; }
 
   function updateSpeedLabel() {
-    els.currentSpeedDisplay.textContent = state.speed + "ms";
+    els.currentSpeedDisplay.textContent = (2050 - state.speed) > 1000 ? "Fast" : state.speed + "ms";
   }
 
   /* ===== HISTORY (for step-backward) ===== */
@@ -726,7 +726,7 @@
     els.resetBtn.addEventListener("click", resetAll);
 
     els.speedSlider.addEventListener("input", () => {
-      state.speed = parseInt(els.speedSlider.value);
+      state.speed = 2050 - parseInt(els.speedSlider.value);
       updateSpeedLabel();
       if (state.playing) { stopAutoPlay(); startAutoPlay(); }
     });
