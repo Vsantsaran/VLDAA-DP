@@ -1,7 +1,6 @@
 
 c:\VSS\dei_studies\VLDAA\LCS\LCS3\ph3-exp-template-main\experiment\simulation\js\main.js
-  1022:47  warning  'e' is defined but never used  no-unused-vars
-  1155:43  warning  'e' is defined but never used  no-unused-vars
+  610:37  warning  'idx' is defined but never used  no-unused-vars
 
-✖ 2 problems (0 errors, 2 warnings)
+✖ 1 problem (0 errors, 1 warning)
 
